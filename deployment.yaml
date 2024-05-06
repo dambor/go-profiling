@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-profiling-deployment
+  labels:
+    app: go-profiling
+spec:
+  replicas: 2  # You can adjust the number of replicas based on your needs
+  selector:
+    matchLabels:
+      app: go-profiling
+  template:
+    metadata:
+      labels:
+        app: go-profiling
+    spec:
+      containers:
+      - name: go-profiling
+        image: glenioborges/go-profiling:v3
+        resources:
+          requests:
+            cpu: "500m"  # Request half a CPU core
+          limits:
+            cpu: "1000m"  # Limit to one CPU core
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-profiling-service
+spec:
+  type: NodePort
+  selector:
+    app: go-profiling
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30080
