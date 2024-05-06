@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"net/http"
+	"runtime"
 	"strconv"
 )
 
@@ -72,10 +73,10 @@ func PrintAscii(w http.ResponseWriter, r *http.Request) {
 }
 
 func consumeCPU(n int) {
-	//for {
-	for i := 0; i < n; i++ {
-		math.Sqrt(float64(i))
+	for {
+		for i := 0; i < n; i++ {
+			math.Sqrt(float64(i))
+		}
+		runtime.Gosched() // Yield the processor allowing other goroutines to run
 	}
-	//	runtime.Gosched() // Yield the processor allowing other goroutines to run
-	//}
 }
