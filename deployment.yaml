@@ -28,11 +28,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: parca-web-service
+  name: go-profiling-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
-    app: parca-web
+    app: go-profiling
   ports:
   - port: 8080
     targetPort: 8080
+    nodePort: 30080
