@@ -5,7 +5,7 @@ metadata:
   labels:
     app: go-profiling
 spec:
-  replicas: 3  # You can adjust the number of replicas based on your needs
+  replicas: 2  # You can adjust the number of replicas based on your needs
   selector:
     matchLabels:
       app: go-profiling
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: go-profiling
-        image: glenioborges/go-profiling:v2
+        image: glenioborges/go-profiling:latest
         resources:
           requests:
             cpu: "500m"  # Request half a CPU core
