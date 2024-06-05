@@ -5,7 +5,7 @@ metadata:
   labels:
     app: go-profiling
 spec:
-  replicas: 2  # You can adjust the number of replicas based on your needs
+  replicas: 4  # You can adjust the number of replicas based on your needs
   selector:
     matchLabels:
       app: go-profiling
