@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: go-profiling
-        image: glenioborges/go-profiling:v1
+        image: glenioborges/go-profiling:v2
         resources:
           requests:
             cpu: "500m"  # Request half a CPU core
